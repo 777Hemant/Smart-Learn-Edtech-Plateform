@@ -59,7 +59,7 @@ const ReviewSlider = () => {
           modules={[FreeMode, Pagination, Autoplay]}
           className="w-full "
         >
-            {reviews.map((review, i) => {
+            {reviews?.map((review, i) => {
               return (
 
                 <SwiperSlide key={i}>
@@ -82,7 +82,7 @@ const ReviewSlider = () => {
                       </div>
                     </div>
                     <p className="font-medium text-richblack-25">
-                      {review?.review.split(" ").length > truncateWords
+                      {review?.review?.split(" ")?.length > truncateWords
                         ? `${review?.review
                             .split(" ")
                             .slice(0, truncateWords)
