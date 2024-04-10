@@ -32,7 +32,7 @@ exports.createCategory = async (req, res) => {
 exports.showAllCategories = async (req, res) => {
 	try {
         console.log("INSIDE SHOW ALL CATEGORIES");
-		const allCategorys = await Category.find({});
+		const allCategorys = await Category.find();
 		res.status(200).json({
 			success: true,
 			data: allCategorys,
@@ -96,9 +96,6 @@ exports.categoryPageDetails = async (req, res) => {
         .populate({
           path: "courses",
           match: { status: "Published" },
-          populate: {
-            path: "instructor",
-        },
         })
         .exec()
       const allCourses = allCategories.flatMap((category) => category.courses)
